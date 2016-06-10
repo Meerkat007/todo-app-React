@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+    
     devtool: 'inline-source-map', // gives us line numbers if there's an error, which is good for debugging
     entry: [ 
         // where webpack is going to look for our files
@@ -10,13 +11,13 @@ module.exports = {
         './src' // initial files, default is index.js 
     ],
     output: {
-        path: path.join('public'),
+        path: path.join('../public'),
         filename: 'bundle.js'
     },
     resolve: {
         // where webpack is going to look for the files to bundle it all together
         modulesDirectories: ['node_modules', 'src'],
-        extensions: ['', '.js']
+        extensions: ['', '.js', '.jsx']
     },
     module: {
         loaders: [
@@ -27,9 +28,10 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin() // webpack won't compile if there are errors
-    ]
+    plugins: 
+       [
+            new webpack.HotModuleReplacementPlugin(),
+            new webpack.NoErrorsPlugin() // webpack won't compile if there are errors
+        ]
         
 };
